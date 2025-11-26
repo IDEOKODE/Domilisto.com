@@ -1,0 +1,121 @@
+:root {
+    --domi-orange: #ff3b01;
+    --domi-dark: #1a1a1a;
+}
+
+/* LOGO más grande sin aumentar la altura del nav */
+.logo-nav {
+    height: 70px;
+    width: auto;
+}
+
+/* HERO */
+.inicio-section {
+    min-height: 100vh;
+    padding-top: 250px; /* altura original hero */
+    background-position: center 10% !important;
+}
+
+/* ==========================
+   ESTILOS MÓVIL (max-width: 768px)
+   ========================== */
+@media (max-width: 768px) {
+
+    /* Topbar se muestra */
+    .domi-topbar {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        z-index: 100;
+        backdrop-filter: blur(8px);
+        background-color: #121212;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Navbar y menú móvil ocultos */
+    #navbar,
+    #mobileMenu {
+        display: none !important;
+    }
+
+    /* Promo Bar sticky debajo del topbar */
+    #promoBar {
+        width: 100%;
+        background-color: var(--domi-orange);
+        color: white;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        position: sticky;
+        top: 70px; /* debajo del topbar */
+        z-index: 85;
+    }
+
+    #promoBar .max-w-6xl {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #promoBar img {
+        width: 2.5rem;
+        height: 2.5rem;
+        object-fit: contain;
+        border-radius: 9999px;
+    }
+
+    #promoBar a {
+        background-color: white;
+        color: black;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: opacity 0.3s;
+    }
+
+    #promoBar a:hover {
+        opacity: 0.8;
+    }
+
+    #promoBar button {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: white;
+        line-height: 1;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Ajuste de scroll para todas las secciones */
+    section, .section {
+        scroll-margin-top: 130px; /* espacio topbar + promo */
+    }
+
+    /* Hero empujado por topbar + promo */
+    .inicio-section {
+        padding-top: calc(250px + 70px + 60px); /* hero + topbar + promo */
+        min-height: 100vh;
+        background-position: center 10% !important;
+    }
+}
+
+/* ==========================
+   ESTILOS ESCRITORIO (min-width: 769px)
+   ========================== */
+@media (min-width: 769px) {
+    #navbar {
+        display: flex !important; /* se ve en escritorio */
+    }
+    .domi-topbar {
+        display: flex !important; /* topbar también se ve en escritorio */
+    }
+}
+
+
+

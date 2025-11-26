@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domilisto - Inicio</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- FAVICON -->
+<link rel="shortcut icon" href="img/logoico.jpg" type="image/png">
+
+</head>
+
+<body class="bg-[var(--domi-dark)] text-white font-sans">
+
+
+<!-- PRELOADER (pegar justo después de <body>) -->
+<div id="preloader" aria-hidden="false" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black">
+  <div class="flex flex-col items-center gap-4">
+    <!-- Logo o imagen de carga -->
+    <img src="img/logoico.jpg" alt="Cargando Domilisto" id="preloader-logo" class="w-28 h-28 object-contain"/>
+
+    <!-- Texto opcional -->
+    <p class="text-white text-sm opacity-80">Cargando aplicación...</p>
+
+    <!-- Spinner sutil (opcional) -->
+    <div class="loader w-10 h-10 rounded-full border-4 border-white/20 border-t-white animate-spin" aria-hidden="true"></div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- BARRA SUPERIOR SOLO MÓVIL -->
+<div class="domi-topbar md:hidden w-full flex items-center justify-between px-4 py-3 border-b border-black/10 bg-white">
+
+    <!-- Logo + texto -->
+    <div class="flex items-center space-x-3">
+        <img src="img/logoico.jpg" class="w-10 h-10 rounded-full object-cover border-2 border-black">
+        
+        <!-- Textos negros -->
+        <div class="flex flex-col leading-tight">
+            <span class="text-black text-sm font-semibold tracking-wide">Delivery</span>
+            <span class="text-black text-base font-bold tracking-wide -mt-1">Domicilios</span>
+        </div>
+    </div>
+
+    <!-- Barra de búsqueda + botón -->
+    <div class="flex-1 flex items-center space-x-2 max-w-[55%]">
+        <input type="text"
+               id="searchInput"
+               placeholder="Buscar sección..."
+               class="w-full py-2 px-3 rounded-lg bg-white text-black placeholder-black/50
+                      focus:outline-none focus:ring-2 focus:ring-[var(--domi-orange)] transition">
+        <button id="searchBtn" 
+                class="bg-[var(--domi-orange)] text-black font-semibold px-3 py-2 rounded-lg hover:bg-black hover:text-white transition">
+            Ir
+        </button>
+    </div>
+
+</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  const secciones = {
+    'inicio': 'inicio',
+    'pedido': 'pedidos',
+    'pedidos': 'pedidos',
+    'beneficios': 'beneficios',
+    'opiniones': 'opiniones',
+    'faq': 'faq',
+    'contacto': 'contacto'
+  };
+
+  searchBtn.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    const idSeccion = secciones[query];
+
+    if(idSeccion) {
+      const elemento = document.getElementById(idSeccion);
+      if(elemento) {
+        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      alert('No se encontró la sección');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- NAVBAR SOLO DESKTOP -->
+<header id="navbar" class="w-full fixed top-0 left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10 hidden md:flex">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-4 w-full">
+
+        <!-- LOGO -->
+        <a href="#inicio" class="block">
+            <img src="img/logo eduar.png" alt="Domilisto Logo"
+                 class="logo-nav w-20 md:w-30 drop-shadow-lg select-none 
+                        transition-transform duration-300 hover:scale-110 active:scale-110">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="flex items-center space-x-6 text-lg font-medium tracking-wide text-white">
+            <li><a href="#promociones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Inicio</a></li>
+            <li><a href="#pedidos" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Haz tu pedido</a></li>
+            <li><a href="#beneficios" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Beneficios</a></li>
+            <li><a href="#opiniones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Opiniones</a></li>
+            <li><a href="#faq" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">FAQ</a></li>
+            <li><a href="#contacto" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<!-- BARRA PROMO DEBAJO DEL NAVBAR (STICKY) -->
+<div id="promoBar" 
+     class="w-full bg-[var(--domi-orange)] text-white py-3 px-4 shadow-md sticky top-[90px] z-40">
+
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+        <!-- IZQUIERDA: LOGO + TEXTOS -->
+        <div class="flex items-center gap-3">
+
+            <!-- LOGO -->
+            <img src="img/logoico.jpg" alt="Logo" class="w-10 h-10 object-contain rounded-full">
+
+            <!-- TEXTOS -->
+            <div class="leading-tight">
+                <span class="block font-bold text-[16px]">
+                    Domilisto.com
+                </span>
+                <span class="block text-[14px] opacity-90 -mt-1">
+                    La mejor página para hacer tus pedidos
+                </span>
+            </div>
+
+        </div>
+
+        
+
+            <!-- BOTÓN CERRAR -->
+            <button onclick="document.getElementById('promoBar').style.display='none'" 
+                    class="font-bold text-2xl leading-none text-white">
+                ✕
+            </button>
+
+        </div>
+
+    </div>
+</div>
+<!-- SECCIÓN PROMOCIONES - CARRUSEL SOLO IMÁGENES -->
+<section id="promociones" class="py-12 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-[var(--domi-dark)]">
+            Nuestras promociones
+        </h2>
+
+        <!-- Contenedor de scroll horizontal -->
+        <div id="promoCarousel" class="flex overflow-x-scroll space-x-6 snap-x snap-mandatory pb-4 mt-6">
+            
+            <!-- 5 Tarjetas solo imagen -->
+            <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
+  <img src="img/marco.png" alt="Promo 1" 
+       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+       draggable="false">
+</div>
+
+          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
+  <img src="img/marco.png" alt="Promo 1" 
+       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+       draggable="false">
+</div>
+
+
+          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
+  <img src="img/marco.png" alt="Promo 1" 
+       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+       draggable="false">
+</div>
+
+
+          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
+  <img src="img/marco.png" alt="Promo 1" 
+       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+       draggable="false">
+</div>
+
+          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
+  <img src="img/marco.png" alt="Promo 1" 
+       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+       draggable="false">
+</div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+/* Ocultar scrollbar si se aplica la clase */
+.scrollbar-hide::-webkit-scrollbar { 
+    display: none; 
+}
+.scrollbar-hide { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+/* Sección de promociones */
+#promociones {
+    margin-top: 0;          /* quitar margen extra */
+    padding-top: 10rem;      /* separación interna opcional */
+    background-color: #f9f9f9; /* mismo color de la sección, evita línea negra */
+}
+
+/* Carrusel */
+#promoCarousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    padding: 1rem 0;
+
+    /* Evitar selección y arrastre de imágenes */
+    -webkit-user-drag: none; /* Chrome, Safari */
+    user-select: none;
+}
+#promoCarousel:active { cursor: grabbing; }
+
+#promoCarousel img {
+    user-select: none;
+    pointer-events: auto; /* mantener drag del carrusel */
+
+    
+}
+
+/* Ocultar scrollbar en todos los navegadores */
+#promoCarousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+#promoCarousel {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+</style>
+
+<script>
+const slider = document.getElementById('promoCarousel');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+// Mouse events
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('cursor-grabbing');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => { 
+    isDown = false; 
+    slider.classList.remove('cursor-grabbing'); 
+});
+slider.addEventListener('mouseup', () => { 
+    isDown = false; 
+    slider.classList.remove('cursor-grabbing'); 
+});
+slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+});
+
+// Touch events
+slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('touchmove', e => {
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+});
+</script>
+
+
+
+<!-- SECCIÓN PEDIDO / BUSCADOR PRINCIPAL -->
+<section id="pedidos" class="w-full bg-[#ff3b01] py-10 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+        <!-- COLUMNA IZQUIERDA / BUSCADOR -->
+        <div class="text-white">
+
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                ¿Dónde te encuentras?
+            </h2>
+
+            <p class="text-lg opacity-90 mb-3">
+                Ingresa tu ubicación para ver los servicios disponibles.
+            </p>
+
+            <!-- Caja de búsqueda tipo PedidosYa -->
+            <div class="bg-white flex items-center rounded-lg shadow-xl p-3 w-full max-w-md">
+
+                <!-- Icono ubicación -->
+                <svg class="w-7 h-7 text-[#ff3b01]" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+                </svg>
+
+                <!-- Texto / search estático -->
+                <input type="text" 
+                       placeholder="Santa Cruz de la Sierra"
+                       class="w-full ml-3 text-black text-lg outline-none placeholder-black font-medium">
+            </div>
+             <!-- BOTÓN REALIZAR PEDIDO -->
+            <button onclick="document.getElementById('carousel').scrollIntoView({ behavior: 'smooth' })"
+                class="mt-6 bg-white text-[#ff3b01] text-lg font-bold px-6 py-3 rounded-lg shadow-md hover:bg-gray-100 transition">
+                Realizar pedido
+            </button>
+
+        </div>
+
+       <!-- COLUMNA DERECHA: SLIDER AUTOMÁTICO -->
+<div class="w-full flex justify-center">
+
+    <div class="relative w-full h-80 rounded-2xl overflow-hidden shadow-xl">
+
+        <!-- Slide 1 -->
+        <img src="img/banner.png" 
+             class="slide opacity-100 absolute inset-0 w-full h-full object-cover transition-opacity duration-700">
+
+        <!-- Slide 2 -->
+        <img src="img/banner1.png" 
+             class="slide opacity-0 absolute inset-0 w-full h-full object-cover transition-opacity duration-700">
+
+        <!-- Slide 3 -->
+        <img src="img/banner2.png" 
+             class="slide opacity-0 absolute inset-0 w-full h-full object-cover transition-opacity duration-700">
+
+    </div>
+
+</div>
+
+<!-- SCRIPT SLIDER AUTOMÁTICO -->
+<script>
+    let index = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    setInterval(() => {
+        slides[index].style.opacity = 0;          // Oculta el actual
+        index = (index + 1) % slides.length;      // Avanza al siguiente
+        slides[index].style.opacity = 1;          // Muestra el nuevo
+    }, 2000); // 3 segundos
+</script>
+
+
+    </div>
+</section>
+
+<!-- TÍTULO -->
+<h2 class="text-3xl font-bold text-white text-center mt-12 mb-6">
+    Nuestros Servicios
+</h2>
+
+<!-- CONTENEDOR GENERAL -->
+<div class="w-full overflow-hidden relative mt-6">
+
+    <!-- FLECHA IZQUIERDA -->
+    <button id="leftBtn"
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white border border-gray-300 p-3 rounded-full shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+    </button>
+
+    <!-- CARRUSEL -->
+    <div id="carousel"
+        class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar px-16 py-6">
+
+        <!-- TARJETA 1 -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/domicilios.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Domicilios</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20solicitar%20un%20domicilio"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 2 -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/mensajeria.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Mensajería</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20solicitar%20un%20servicio%20de%20mensajería"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 3 -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/pagos.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Pagos y Trámites</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20realizar%20un%20pago%20o%20tr%C3%A1mite"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 4 -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/mercados.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Mercados</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20hacer%20un%20encargo%20de%20mercado"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 5 -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/restaurantes.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Restaurantes</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20pedir%20comida%20de%20restaurante"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 6 - Farmacias -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/farmacia.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Farmacias</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20necesito%20un%20pedido%20de%20farmacia"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 7 - Café & Postres -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/cafe.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Café & Postres</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20pedir%20café%20o%20postres"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+        <!-- TARJETA 8 - Licores -->
+        <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
+            <img src="iconos/alcohol.png" class="w-20 h-20 object-contain mb-4" alt="">
+            <h3 class="font-semibold text-xl text-center text-black mb-4">Licores</h3>
+            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20comprar%20licores"
+               class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
+               Pedir por WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+    <!-- FLECHA DERECHA -->
+    <button id="rightBtn"
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white border border-gray-300 p-3 rounded-full shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+    </button>
+</div>
+
+<!-- JS DEL CARRUSEL -->
+<script>
+    const carousel = document.getElementById("carousel");
+    const rightBtn = document.getElementById("rightBtn");
+    const leftBtn = document.getElementById("leftBtn");
+
+    rightBtn.onclick = () => {
+        carousel.scrollLeft += 320;
+    };
+
+    leftBtn.onclick = () => {
+        carousel.scrollLeft -= 320;
+    };
+</script>
+
+<!-- OCULTAR BARRA DE SCROLL -->
+<style>
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+
+
+<!-- SECCIÓN CON FONDO PERSONALIZABLE -->
+<section id="seccion-fondo" 
+         class="relative w-full min-h-screen bg-no-repeat bg-cover bg-center"
+         style="background-image: url('img/banner.jpeg');">
+
+    <!-- Capa oscura opcional para resaltar contenido -->
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <!-- TIMELINE - siempre al fondo -->
+    <div class="relative z-10 w-full flex flex-col items-center justify-end min-h-screen pb-20">
+        <div class="relative w-full max-w-4xl px-6">
+
+            <!-- Línea central -->
+            <div class="absolute top-1/2 left-0 w-full h-1 bg-white/20 transform -translate-y-1/2"></div>
+
+            <!-- Pasos -->
+            <div class="relative flex justify-between text-center">
+
+                <!-- Paso 1 -->
+                <div class="flex flex-col items-center w-1/3">
+                    <svg class="w-10 h-10 text-[var(--domi-orange)] mb-3 drop-shadow" 
+                         fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 13h2a4 4 0 0 1 7.9-1H17l3-3h-4l-3-3H8v2h3l2 2h-2.1A4 4 0 0 1 5 13H3zm3 2a2 2 0 1 0 0 4a2 2 0 0 0 0-4zm12 0a2 2 0 1 0 0 4a2 2 0 0 0 0-4z"/>
+                    </svg>
+                    <div class="w-5 h-5 bg-[var(--domi-orange)] rounded-full border-4 border-white"></div>
+                    <p class="mt-4 text-lg font-semibold text-white drop-shadow">Pides tu domicilio</p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="flex flex-col items-center w-1/3">
+                    <svg class="w-10 h-10 text-[var(--domi-orange)] mb-3 drop-shadow" 
+                         fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 7h-2l-1-2h-6l-1 2H7l-1 3v4h2a3 3 0 0 0 6 0h2a3 3 0 0 0 6 0V9l-3-2zm-9 8a1 1 0 1 1 0-2a1 1 0 0 1 0 2zm8 0a1 1 0 1 1 0-2a1 1 0 0 1 0 2z"/>
+                    </svg>
+                    <div class="w-5 h-5 bg-[var(--domi-orange)] rounded-full border-4 border-white"></div>
+                    <p class="mt-4 text-lg font-semibold text-white drop-shadow">Lo recogemos rápido</p>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="flex flex-col items-center w-1/3">
+                    <svg class="w-10 h-10 text-[var(--domi-orange)] mb-3 drop-shadow" 
+                         fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M2 12l4 2l2 6l3-4l5 1l6-9l-7 1l-2-4l-3 7l-4-1z"/>
+                    </svg>
+                    <div class="w-5 h-5 bg-[var(--domi-orange)] rounded-full border-4 border-white"></div>
+                    <p class="mt-4 text-lg font-semibold text-white drop-shadow">Lo entregamos seguro</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SECCIÓN BENEFICIOS -->
+<!-- SECCIÓN BENEFICIOS -->
+<section id="beneficios" class="py-16 bg-white">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <!-- TÍTULO -->
+        <h2 class="text-3xl md:text-4xl font-bold text-[#ff3b01] text-center mb-12">
+            Beneficios de usar nuestro servicio
+        </h2>
+
+        <!-- GRID DE BENEFICIOS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <!-- BENEFICIO 1 -->
+            <div class="bg-white border-2 border-[#ff3b01] p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition">
+                
+                <div class="w-20 h-20 flex items-center justify-center bg-[#ff3b01]/10 rounded-full mx-auto mb-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-[#ff3b01]" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-bold text-black mb-2">Entregas rápidas</h3>
+                <p class="text-gray-700">Recibe tus pedidos sin demoras, con velocidad y eficiencia garantizada.</p>
+            </div>
+
+            <!-- BENEFICIO 2 -->
+            <div class="bg-white border-2 border-[#ff3b01] p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition">
+
+                <div class="w-20 h-20 flex items-center justify-center bg-[#ff3b01]/10 rounded-full mx-auto mb-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-[#ff3b01]" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4m16 0a8 8 0 01-16 0m16 0a8 8 0 00-16 0" />
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-bold text-black mb-2">Precios justos</h3>
+                <p class="text-gray-700">Tarifas competitivas sin costos escondidos ni sorpresas.</p>
+            </div>
+
+            <!-- BENEFICIO 3 -->
+            <div class="bg-white border-2 border-[#ff3b01] p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition">
+
+                <div class="w-20 h-20 flex items-center justify-center bg-[#ff3b01]/10 rounded-full mx-auto mb-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-[#ff3b01]" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3-.895 3-2s-1.343-2-3-2-3 .895-3 2 1.343 2 3 2zm0 0v4m0 0c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4z" />
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-bold text-black mb-2">Atención personalizada</h3>
+                <p class="text-gray-700">Te acompañamos por WhatsApp para resolver tus dudas al instante.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- SECCIÓN TESTIMONIOS -->
+<!-- SECCIÓN TESTIMONIOS -->
+<section id="opiniones" class="w-full bg-[var(--domi-orange)] py-16 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+
+        <!-- TÍTULO -->
+        <h2 class="text-3xl font-bold text-white mb-10">
+            Lo que dicen nuestros usuarios
+        </h2>
+
+        <!-- GRID DE TESTIMONIOS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- TESTIMONIO 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <div class="flex items-center gap-3 mb-3">
+
+                    <!-- FOTO DE PERFIL -->
+                    <img src="iconos/woman_5730547.png" 
+                         alt="Foto de perfil"
+                         class="w-14 h-14 rounded-full object-cover border border-gray-300">
+
+                    <div>
+                        <p class="font-semibold text-gray-800">María R.</p>
+                        <p class="text-sm text-gray-500">Cliente frecuente</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700">
+                    “El servicio es rapidísimo y siempre llega todo tal como lo pedí. 
+                    Recomiendo Domilisto al 100%.”
+                </p>
+            </div>
+
+            <!-- TESTIMONIO 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <div class="flex items-center gap-3 mb-3">
+
+                    <!-- FOTO DE PERFIL -->
+                    <img src="iconos/male_12323767.png" 
+                         alt="Foto de perfil"
+                         class="w-14 h-14 rounded-full object-cover border border-gray-300">
+
+                    <div>
+                        <p class="font-semibold text-gray-800">Andrés P.</p>
+                        <p class="text-sm text-gray-500">Comprador diario</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700">
+                    “La app es súper fácil de usar y encuentro todo mucho más rápido 
+                    que en otras plataformas.”
+                </p>
+            </div>
+
+            <!-- TESTIMONIO 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <div class="flex items-center gap-3 mb-3">
+
+                    <!-- FOTO DE PERFIL -->
+                    <img src="iconos/woman_5730547.png" 
+                         alt="Foto de perfil"
+                         class="w-14 h-14 rounded-full object-cover border border-gray-300">
+
+                    <div>
+                        <p class="font-semibold text-gray-800">Laura M.</p>
+                        <p class="text-sm text-gray-500">Nueva usuaria</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700">
+                    “Me encantó lo fácil que es pedir y lo rápido que llegan las entregas. 
+                    Muy recomendado.”
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- SECCIÓN PREGUNTAS FRECUENTES -->
+<section id="faq" class="w-full bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- TÍTULO -->
+        <h2 class="text-3xl font-bold text-center text-[var(--domi-orange)] mb-10">
+            Preguntas frecuentes
+        </h2>
+
+        <!-- CONTENEDOR FAQ -->
+        <div class="space-y-4">
+
+            <!-- PREGUNTA 1 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
+                    <span class="text-lg font-semibold text-gray-800">
+                        ¿Cuánto tarda en llegar mi pedido?
+                    </span>
+                    <span class="text-2xl text-[var(--domi-orange)]">+</span>
+                </button>
+                <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                    Por lo general entre 15 y 45 minutos, dependiendo de la zona y la demanda.
+                </div>
+            </div>
+
+            <!-- PREGUNTA 2 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
+                    <span class="text-lg font-semibold text-gray-800">
+                        ¿Qué métodos de pago aceptan?
+                    </span>
+                    <span class="text-2xl text-[var(--domi-orange)]">+</span>
+                </button>
+                <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                    Aceptamos efectivo, transferencias, pagos digitales y métodos según comercio aliado.
+                </div>
+            </div>
+
+            <!-- PREGUNTA 3 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
+                    <span class="text-lg font-semibold text-gray-800">
+                        ¿Cobran costo adicional por domicilio?
+                    </span>
+                    <span class="text-2xl text-[var(--domi-orange)]">+</span>
+                </button>
+                <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                    El costo depende del comercio y la distancia, pero siempre lo verás antes de confirmar tu pedido.
+                </div>
+            </div>
+
+            <!-- PREGUNTA 4 -->
+            <div class="border border-gray-200 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
+                    <span class="text-lg font-semibold text-gray-800">
+                        ¿Puedo programar pedidos para más tarde?
+                    </span>
+                    <span class="text-2xl text-[var(--domi-orange)]">+</span>
+                </button>
+                <div class="faq-content hidden px-4 pb-4 text-gray-600">
+                    Claro, puedes programar tu pedido para la hora que necesites según disponibilidad.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT DEL ACORDEÓN FAQ -->
+<script>
+    const toggles = document.querySelectorAll('.faq-toggle');
+
+    toggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('span:last-child');
+
+            content.classList.toggle('hidden');
+
+            // Cambia + / -
+            if (content.classList.contains('hidden')) {
+                icon.textContent = '+';
+            } else {
+                icon.textContent = '-';
+            }
+        });
+    });
+</script>
+
+
+
+
+<!-- SECCIÓN FORMULARIO -->
+<!-- SECCIÓN FORMULARIO TEMÁTICO -->
+<section id="contacto" class="w-full bg-[var(--domi-orange)] py-16 px-6">
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        <!-- COLUMNA IZQUIERDA (IMAGEN + TEXTO) -->
+        <div class="text-white space-y-6">
+
+            <h2 class="text-4xl font-extrabold leading-tight">
+                ¿Necesitas un domicilio?
+                <br>
+                ¡Estamos listos para ayudarte!
+            </h2>
+
+            <p class="opacity-90 text-lg">
+                Realiza tu solicitud en pocos segundos y uno de nuestros repartidores
+                tomará tu pedido inmediatamente.
+            </p>
+
+            <img src="img/personaje.png"
+                 class="w-full max-w-sm mx-auto drop-shadow-xl" alt="">
+        </div>
+
+        <!-- COLUMNA DERECHA (FORMULARIO) -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl space-y-6">
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                Completa tu pedido
+            </h3>
+
+            <!-- NOMBRE -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Nombre</label>
+                <div class="flex items-center bg-gray-100 p-3 rounded-lg border border-gray-300">
+                    <svg class="w-6 h-6 text-[var(--domi-orange)]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1s2.2 4.9 4.9 4.9zm0 2.4c-3.2 0-9.4 1.6-9.4 4.9v2.6h18.8v-2.6c0-3.3-6.1-4.9-9.4-4.9z"/>
+                    </svg>
+                    <input type="text" 
+                           class="ml-3 w-full bg-transparent outline-none text-[#ff3b01] placeholder-gray-500"
+                           placeholder="Tu nombre completo">
+                </div>
+            </div>
+
+            <!-- TELÉFONO -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Número de contacto</label>
+                <div class="flex items-center bg-gray-100 p-3 rounded-lg border border-gray-300">
+                    <svg class="w-6 h-6 text-[var(--domi-orange)]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.6 10.8c1.2 2.3 3.1 4.2 5.3 5.3l1.8-1.8c.2-.2.5-.3.8-.2 1 .3 2 .5 3.1.5.4 0 .8.3.8.8v2.8c0 .4-.3.8-.8.8C9.7 19.9 4.1 14.3 4.1 7.9c0-.4.3-.8.8-.8h2.8c.4 0 .8.3.8.8 0 1.1.2 2.1.5 3.1.1.3 0 .6-.2.8l-1.2 1.2z"/>
+                    </svg>
+                    <input type="tel" 
+                           class="ml-3 w-full bg-transparent outline-none text-[#ff3b01] placeholder-gray-500"
+                           placeholder="Ej: 300 123 4567">
+                </div>
+            </div>
+
+            <!-- DIRECCIÓN -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">Dirección del pedido</label>
+                <div class="flex items-center bg-gray-100 p-3 rounded-lg border border-gray-300">
+                    <svg class="w-6 h-6 text-[var(--domi-orange)]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+                    </svg>
+                    <input type="text" 
+                           class="ml-3 w-full bg-transparent outline-none text-[#ff3b01] placeholder-gray-500"
+                           placeholder="Ej: Calle 10 #8-20, Barrio Centro">
+                </div>
+            </div>
+
+            <!-- MENSAJE -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-1">¿Qué necesitas?</label>
+                <textarea rows="4"
+                    class="w-full p-3 bg-gray-100 rounded-lg border border-gray-300 outline-none text-[#ff3b01] placeholder-gray-500"
+                    placeholder="Cuéntanos tu pedido: compras, domicilios, trámites..."></textarea>
+            </div>
+
+            <!-- BOTÓN -->
+            <button class="w-full bg-[var(--domi-orange)] text-white font-bold py-3 rounded-lg text-lg shadow-md hover:opacity-90 transition">
+                Enviar solicitud ahora
+            </button>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+   <!-- FOOTER -->
+<footer class="bg-black py-14 px-6 text-gray-300">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+
+        <!-- LOGO / DESCRIPCIÓN -->
+        <div>
+            <h3 class="text-2xl font-bold text-[var(--domi-orange)] mb-3">
+                Domilisto
+            </h3>
+            <p class="text-gray-400">
+                Tu plataforma rápida y confiable para pedir lo que necesites:
+                comida, mercado, medicamentos y más.
+            </p>
+        </div>
+
+        <!-- ENLACES RÁPIDOS -->
+        <div>
+            <h4 class="text-lg font-semibold text-white mb-3">Enlaces</h4>
+            <ul class="space-y-2">
+                <li><a href="#" class="hover:text-[var(--domi-orange)]">Inicio</a></li>
+                <li><a href="#" class="hover:text-[var(--domi-orange)]">Servicios</a></li>
+                <li><a href="#" class="hover:text-[var(--domi-orange)]">Beneficios</a></li>
+                <li><a href="#" class="hover:text-[var(--domi-orange)]">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+
+        <!-- CONTACTO -->
+        <div>
+            <h4 class="text-lg font-semibold text-white mb-3">Contacto</h4>
+            <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                    <span class="text-[var(--domi-orange)]">📧</span> soporte@domilisto.com
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-[var(--domi-orange)]">📱</span> +57 300 000 0000
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-[var(--domi-orange)]">📍</span> Colombia
+                </li>
+            </ul>
+        </div>
+
+      <!-- REDES SOCIALES -->
+<div>
+    <h4 class="text-lg font-semibold text-white mb-3">Síguenos</h4>
+    <div class="flex gap-4 text-2xl">
+
+        <!-- FACEBOOK -->
+        <a href="#" class="hover:text-[var(--domi-orange)] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" 
+                viewBox="0 0 24 24" class="w-7 h-7">
+                <path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 
+                1.325 0 2.463.098 2.794.142v3.24h-1.918c-1.504 0-1.795.715-1.795 1.764v2.316h3.587l-.467 3.622h-3.12V24h6.116C23.403 
+                24 24 23.403 24 22.667V1.333C24 .598 23.403 0 22.675 0z"/>
+            </svg>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="#" class="hover:text-[var(--domi-orange)] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 24 24" class="w-7 h-7">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 
+                0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 
+                3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 
+                1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 
+                6 3 3 0 010-6zm4.5-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+            </svg>
+        </a>
+
+        <!-- TIKTOK -->
+        <a href="#" class="hover:text-[var(--domi-orange)] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 24 24" class="w-7 h-7">
+                <path d="M12.75 0h3.75c.056 1.612.632 3.026 1.71 4.226 
+                1.078 1.2 2.41 1.908 4 2.124v3.9c-1.45.14-2.787-.147-4-.86v7.385c0 
+                2.097-.735 3.888-2.205 5.37C14.535 23.63 12.77 24 10.7 24c-1.318 
+                0-2.538-.252-3.66-.756a8.64 8.64 0 01-2.894-2.07 9.05 9.05 0 
+                01-1.92-3.056A10.18 10.18 0 012 14.45c0-2.735.895-5.054 
+                2.685-6.958C6.474 5.588 8.68 4.55 11.3 4.55c.49 0 .98.042 
+                1.45.125v4.065a6.899 6.899 0 00-1.45-.175c-1.59 0-2.895.52-3.915 
+                1.56C6.365 11.165 5.85 12.6 5.85 14.45c0 1.89.52 3.345 1.56 
+                4.365 1.04 1.02 2.32 1.53 3.84 1.53 1.23 0 2.265-.39 3.105-1.17.84-.78 
+                1.26-1.77 1.26-2.97V0z"/>
+            </svg>
+        </a>
+
+    </div>
+</div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+<div class="text-center text-gray-500 mt-10 pt-5 border-t border-gray-700">
+    <p>
+        © 2025 Domilisto. Todos los derechos reservados. - 
+        <a href="https://ideokode-page.onrender.com/" 
+           target="_blank" 
+           class="underline hover:text-[var(--domi-orange)] transition">
+           IdeoKode
+        </a>.
+    </p>
+</div>
+
+</footer>
+
+
+
+<script>
+  (function(){
+    const pre = document.getElementById('preloader');
+
+    // por si quieres mostrar alguna clase inicial
+    pre.classList.add('showing');
+
+    function hidePreloader() {
+      if (!pre || pre.classList.contains('hidden')) return;
+      pre.classList.add('hiding');
+
+      // animación: esperar 350ms y luego ocultar completamente
+      setTimeout(() => {
+        pre.classList.add('hidden');
+        pre.setAttribute('aria-hidden', 'true');
+      }, 350);
+    }
+
+    // Ocultar cuando la página haya cargado (recursos incluidos)
+    window.addEventListener('load', hidePreloader);
+
+    // Backup: si por alguna razón no se dispara load, forzamos ocultar a los X ms
+    setTimeout(hidePreloader, 5000); // 5s como fallback
+  })();
+</script>
+
+
+
+
+
+<!-- BOTÓN FLOTANTE WHATSAPP + CHAT INTERACTIVO -->
+<div id="whatsapp-widget" class="fixed bottom-6 right-6 z-50">
+
+    <!-- BOTÓN PRINCIPAL -->
+    <button id="openChat"
+        class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition transform hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+            fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12.04 2C6.56 2 2.1 6.46 2.1 11.94c0 2.11.62 4.06 1.69 5.7L2 22l4.47-1.73a10.02 10.02 0 0 0 5.57 1.68h.01c5.48 0 9.94-4.46 9.94-9.94S17.52 2 12.04 2zm5.78 14.19c-.24.67-1.39 1.32-1.92 1.39-.49.07-1.1.11-1.78-.11-.41-.13-.93-.3-1.6-.59-2.81-1.23-4.63-4.11-4.77-4.3-.14-.19-1.14-1.52-1.14-2.9 0-1.38.72-2.05.98-2.33.24-.28.63-.41 1-.41.12 0 .24 0 .35.01.31.01.47.03.68.53.24.58.82 2 .89 2.15.07.14.12.31.02.5-.09.19-.14.31-.27.48-.14.17-.29.38-.41.51-.14.14-.28.3-.12.57.17.28.76 1.24 1.63 2.01 1.12.99 2.07 1.31 2.38 1.45.31.13.49.11.67-.06.19-.17.77-.9.98-1.21.21-.32.42-.27.71-.17.29.1 1.83.87 2.14 1.03.31.17.52.25.6.39s.08.81-.16 1.48z" />
+        </svg>
+    </button>
+
+    <!-- CUADRO DE CHAT -->
+    <div id="chatBox"
+        class="hidden flex flex-col w-72 bg-white rounded-xl shadow-2xl p-4 mb-3 animate__animated animate__fadeInUp">
+
+        <!-- Header -->
+        <div class="flex items-center gap-3 border-b pb-3">
+            <img src="img/logoico.jpg" class="w-12 h-12 rounded-full border">
+            <div>
+                <p class="font-bold text-gray-800">Servicio al cliente</p>
+                <p class="text-xs text-green-500 font-semibold">En línea ahora</p>
+            </div>
+        </div>
+
+        <!-- Mensaje automático -->
+        <div class="mt-4 bg-gray-100 p-3 rounded-lg text-gray-700 text-sm shadow-sm">
+            ¡Hola! 👋 <br>
+            ¿Qué servicio requieres el día de hoy?
+        </div>
+
+        <!-- Botón WhatsApp -->
+        <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20más%20información"
+           target="_blank"
+           class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg text-center font-semibold hover:bg-green-600 transition">
+            Abrir chat en WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- JS DEL WIDGET -->
+<script>
+    const openChat = document.getElementById("openChat");
+    const chatBox = document.getElementById("chatBox");
+
+    openChat.addEventListener("click", () => {
+        chatBox.classList.toggle("hidden");
+    });
+</script>
+
+<!-- Animaciones Animate.css (si no la tienes) -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+</body>
+</html>
