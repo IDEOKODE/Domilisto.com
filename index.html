@@ -42,7 +42,7 @@
 
     <!-- Logo + texto -->
     <div class="flex items-center space-x-3">
-        <img src="img/logoico.jpg" class="w-10 h-10 rounded-full object-cover border-2 ">
+        <img src="img/logo eduar.png" class="w-10 h-10 rounded-full object-cover border-2 ">
         
         <!-- Textos negros -->
         <div class="flex flex-col leading-tight">
@@ -105,29 +105,94 @@
 
 
 
-<!-- NAVBAR SOLO DESKTOP -->
-<header id="navbar" class="w-full fixed top-0 left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10 hidden md:flex">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-4 w-full">
 
-        <!-- LOGO -->
+
+    <!-- NAVBAR -->
+<header id="navbar" class="w-full fixed top-0 left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-4">
+
         <a href="#inicio" class="block">
-            <img src="img/logo eduar.png" alt="Domilisto Logo"
-                 class="logo-nav w-20 md:w-30 drop-shadow-lg select-none 
-                        transition-transform duration-300 hover:scale-110 active:scale-110">
-        </a>
+    <img src="img/Logo_Blanco.png" alt="Domilisto Logo"
+         class="logo-nav w-20 md:w-30 select-none rounded-full
+                transition-transform duration-300 hover:scale-110 active:scale-110">
+</a>
+
 
         <!-- Desktop Menu -->
-        <ul class="flex items-center space-x-6 text-lg font-medium tracking-wide text-white">
-            <li><a href="#promociones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Inicio</a></li>
-            <li><a href="#pedidos" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Haz tu pedido</a></li>
-            <li><a href="#beneficios" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Beneficios</a></li>
-            <li><a href="#opiniones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Opiniones</a></li>
-            <li><a href="#faq" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">FAQ</a></li>
-            <li><a href="#contacto" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
+        <ul class="hidden md:flex items-center space-x-6 text-lg font-medium tracking-wide text-white">
 
+            <!-- Inicio -->
+            <li class="flex items-center space-x-6">
+                <a href="#inicio" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    Inicio
+                </a>
+                <span class="h-5 w-px bg-white/20"></span>
+            </li>
+
+            <!-- Haz tu pedido -->
+            <li class="flex items-center space-x-6">
+                <a href="#pedidos" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    Haz tu pedido
+                </a>
+                <span class="h-5 w-px bg-white/20"></span>
+            </li>
+
+            <!-- Sección Naranja (Beneficios / Por qué elegirnos) -->
+            <li class="flex items-center space-x-6">
+                <a href="#beneficios" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    Beneficios
+                </a>
+                <span class="h-5 w-px bg-white/20"></span>
+            </li>
+
+            <!-- Opiniones -->
+            <li class="flex items-center space-x-6">
+                <a href="#opiniones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    Opiniones
+                </a>
+                <span class="h-5 w-px bg-white/20"></span>
+            </li>
+
+            <!-- Preguntas Frecuentes -->
+            <li class="flex items-center space-x-6">
+                <a href="#faq" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    FAQ
+                </a>
+                <span class="h-5 w-px bg-white/20"></span>
+            </li>
+
+            <!-- Contacto -->
+            <li>
+                <a href="#contacto" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
+                    Contacto
+                </a>
+            </li>
+
+        </ul>
+<button id="menuBtn" 
+        class="md:hidden text-white bg-transparent text-3xl rounded-lg p-2 hover:opacity-80 transition">
+    ☰
+</button>
+
+
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#121212]/95 backdrop-blur-lg text-white p-4 border-t border-white/10">
+
+        <a href="#inicio" class="block py-3 text-lg border-b border-white/10">Inicio</a>
+
+        <a href="#pedidos" class="block py-3 text-lg border-b border-white/10">Haz tu pedido</a>
+
+        <a href="#beneficios" class="block py-3 text-lg border-b border-white/10">Beneficios</a>
+
+        <a href="#opiniones" class="block py-3 text-lg border-b border-white/10">Opiniones</a>
+
+        <a href="#faq" class="block py-3 text-lg border-b border-white/10">Preguntas frecuentes</a>
+
+        <a href="#contacto" class="block py-3 text-lg">Contacto</a>
+    </div>
+</header>
 
 
 <!-- BARRA PROMO DEBAJO DEL NAVBAR (STICKY) -->
@@ -154,7 +219,14 @@
 
         </div>
 
-        
+        <!-- DERECHA: BOTÓN + CERRAR -->
+        <div class="flex items-center gap-4">
+
+            <!-- BOTÓN PEDIR (BLANCO + TEXTO NEGRO) -->
+            <a href="#pedidos"
+               class="bg-white text-black font-semibold py-2 px-4 rounded-lg hover:opacity-80 transition">
+                Pedir
+            </a>
 
             <!-- BOTÓN CERRAR -->
             <button onclick="document.getElementById('promoBar').style.display='none'" 
@@ -166,13 +238,12 @@
 
     </div>
 </div>
+
+
+
 <!-- SECCIÓN PROMOCIONES - CARRUSEL SOLO IMÁGENES -->
 <section id="promociones" class="py-12 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
-
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-[var(--domi-dark)]">
-            Nuestras promociones
-        </h2>
 
         <!-- Contenedor de scroll horizontal -->
         <div id="promoCarousel" class="flex overflow-x-scroll space-x-6 snap-x snap-mandatory pb-4 mt-6">
@@ -305,7 +376,6 @@ slider.addEventListener('touchmove', e => {
     slider.scrollLeft = scrollLeft - walk;
 });
 </script>
-
 
 
 <!-- SECCIÓN PEDIDO / BUSCADOR PRINCIPAL -->
@@ -1022,6 +1092,24 @@ slider.addEventListener('touchmove', e => {
 </div>
 
 </footer>
+
+
+   <script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Opcional: cerrar el menú cuando se hace clic en un enlace
+  const menuLinks = mobileMenu.querySelectorAll('a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
 
 
 
