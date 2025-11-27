@@ -54,84 +54,99 @@
         padding: 0 1rem;
     }
 
-    #navbar nav {
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  #navbar nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* AHORA QUEDA A LA IZQUIERDA */
+    align-items: center;
+    position: relative;
+    gap: 10px; /* opcional si quieres espacio entre logo y texto */
+}
 
+    /* LOGO circular sin relleno */
     #navbar .logo-nav {
-        background: white;
-        border-radius: 12px;
         width: 65px;
         height: 65px;
-        z-index: 100;
+        object-fit: cover;
+        border-radius: 50%;
+        background: none !important;
+        border: none !important;
     }
 
+    /* Botón menú móvil */
     #menuBtn {
-        color: rgb(255, 255, 255) !important;
+        color: white !important;
+        font-size: 32px;
         position: absolute;
         right: 15px;
         top: 50%;
         transform: translateY(-50%);
-        border-radius: 82px;
-        padding: 6px 20px;
-        z-index: 105;
+        padding: 6px 16px;
+        z-index: 110;
+        border-radius: 12px;
     }
 
-    /* Menú móvil desplegable */
+    /* Menú móvil tipo dropdown */
     #mobileMenu {
-        display: none;
+        display: none; /* oculto inicialmente */
         flex-direction: column;
-        gap: 1rem;
-        background-color: var(--domi-orange) !important;
-        width: 100%;
-        padding: 1rem 0;
-        margin-top: 90px; /* debajo del navbar */
-        z-index: 90;
+        background-color: white;
+        width: 200px;
+        padding: 0.5rem 0;
+
+        position: absolute;
+        top: 100%; /* debajo del botón */
+        right: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        z-index: 120;
+        overflow: hidden;
     }
 
-    /* Cuando el menú se abre */
+    /* Mostrar menú */
     #mobileMenu.open {
         display: flex;
+        animation: dropdown 0.25s ease-out forwards;
     }
 
     #mobileMenu a {
-        color: #ffffff !important;
+        color: #121212 !important;
         font-weight: 600;
-        text-align: center;
-        padding: 0.5rem 0;
+        text-align: left;
+        padding: 0.7rem 1rem;
+        transition: background 0.2s;
     }
 
-    /* Promo Bar sticky debajo de navbar */
+    #mobileMenu a:hover {
+        background-color: rgba(0,0,0,0.06);
+    }
+
+    @keyframes dropdown {
+        0% { transform: translateY(-10px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Promo Bar */
     #promoBar {
         width: 100%;
         background-color: var(--domi-orange);
         color: white;
         padding: 0.75rem 1rem;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         position: sticky;
-        top: 160px; /* topbar 70 + navbar 90 */
+        top: 160px; 
         z-index: 85;
-    }
-
-    #promoBar .max-w-6xl {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     #promoBar img {
         width: 2.5rem;
         height: 2.5rem;
-        object-fit: contain;
         border-radius: 9999px;
+        object-fit: contain;
     }
 
     #promoBar a {
-        background-color: white;
+        background: white;
         color: black;
         font-weight: 600;
         padding: 0.5rem 1rem;
@@ -143,79 +158,15 @@
         opacity: 0.8;
     }
 
-    #promoBar button {
-        font-weight: bold;
-        font-size: 1.25rem;
-        color: white;
-        line-height: 1;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* Ajuste de scroll para todas las secciones */
+    /* Ajuste scroll */
     section, .section {
-        scroll-margin-top: 160px; /* espacio de topbar + navbar */
+        scroll-margin-top: 160px;
     }
 
-    /* Hero / contenido empujado debajo de topbar + navbar + promo */
+    /* Hero corregido */
     .inicio-section {
-        padding-top: calc(250px + 70px + 90px + 60px); /* hero + topbar + navbar + promo */
+        padding-top: calc(250px + 70px + 90px + 60px);
         min-height: 100vh;
         background-position: center 10% !important;
-    }
-}
-
-
-
-@media (max-width: 768px) {
-
-    /* Menú móvil desplegable */
-    #mobileMenu {
-        display: none; /* oculto por defecto */
-        flex-direction: column;
-        gap: 0.5rem;
-        background-color: var(--domi-orange) !important;
-        width: 200px; /* ancho fijo para que quede “como dropdown” */
-        padding: 0.5rem 0;
-        
-        /* Posición justo debajo del botón */
-        position: absolute;
-        top: 100%; /* justo debajo del botón */
-        right: 0;  /* alineado con el botón */
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        z-index: 105; /* por encima de navbar */
-        overflow: hidden;
-    }
-
-    /* Cuando el menú se abre */
-    #mobileMenu.open {
-        display: flex;
-        animation: dropdown 0.25s ease-out forwards; /* animación suave */
-    }
-
-    #mobileMenu a {
-        color: #121212 !important;
-        font-weight: 600;
-        text-align: left;
-        padding: 0.5rem 1rem;
-        transition: background 0.2s;
-    }
-
-    #mobileMenu a:hover {
-        background-color: rgba(255,255,255,0.2);
-    }
-
-    /* Animación de caída */
-    @keyframes dropdown {
-        0% {
-            transform: translateY(-10px);
-            opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
     }
 }

@@ -111,69 +111,61 @@
 <header id="navbar" class="w-full fixed top-0 left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10">
     <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-4">
 
-        <a href="#inicio" class="block">
-    <img src="img/Logo_Blanco.png" alt="Domilisto Logo"
-         class="logo-nav w-20 md:w-30 select-none rounded-full
-                transition-transform duration-300 hover:scale-110 active:scale-110">
-</a>
+        <!-- LOGO + TEXTO -->
+        <a href="#inicio" class="flex items-center space-x-3 select-none">
+
+            <!-- LOGO REDONDO -->
+            <img src="img/logoico.jpg" alt="Domilisto Logo"
+                class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full
+                       transition-transform duration-300 hover:scale-110 active:scale-110">
+
+            <!-- TEXTO A LA DERECHA -->
+            <div class="leading-tight text-white">
+                <span class="text-xl font-bold">Delivery</span><br>
+                <span class="text-sm opacity-80">Domicilios</span>
+            </div>
+
+        </a>
 
 
         <!-- Desktop Menu -->
         <ul class="hidden md:flex items-center space-x-6 text-lg font-medium tracking-wide text-white">
 
-            <!-- Inicio -->
             <li class="flex items-center space-x-6">
-                <a href="#inicio" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    Inicio
-                </a>
+                <a href="#inicio" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Inicio</a>
                 <span class="h-5 w-px bg-white/20"></span>
             </li>
 
-            <!-- Haz tu pedido -->
             <li class="flex items-center space-x-6">
-                <a href="#pedidos" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    Haz tu pedido
-                </a>
+                <a href="#pedidos" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Haz tu pedido</a>
                 <span class="h-5 w-px bg-white/20"></span>
             </li>
 
-            <!-- Sección Naranja (Beneficios / Por qué elegirnos) -->
             <li class="flex items-center space-x-6">
-                <a href="#beneficios" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    Beneficios
-                </a>
+                <a href="#beneficios" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Beneficios</a>
                 <span class="h-5 w-px bg-white/20"></span>
             </li>
 
-            <!-- Opiniones -->
             <li class="flex items-center space-x-6">
-                <a href="#opiniones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    Opiniones
-                </a>
+                <a href="#opiniones" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Opiniones</a>
                 <span class="h-5 w-px bg-white/20"></span>
             </li>
 
-            <!-- Preguntas Frecuentes -->
             <li class="flex items-center space-x-6">
-                <a href="#faq" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    FAQ
-                </a>
+                <a href="#faq" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">FAQ</a>
                 <span class="h-5 w-px bg-white/20"></span>
             </li>
 
-            <!-- Contacto -->
             <li>
-                <a href="#contacto" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">
-                    Contacto
-                </a>
+                <a href="#contacto" class="nav-link hover:text-[var(--domi-orange)] transition-colors duration-200">Contacto</a>
             </li>
-
         </ul>
-<button id="menuBtn" 
-        class="md:hidden text-white bg-transparent text-3xl rounded-lg p-2 hover:opacity-80 transition">
-    ☰
-</button>
 
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" 
+            class="md:hidden text-white bg-transparent text-3xl rounded-lg p-2 hover:opacity-80 transition">
+            ☰
+        </button>
 
     </nav>
 
@@ -181,63 +173,14 @@
     <div id="mobileMenu" class="hidden md:hidden bg-[#121212]/95 backdrop-blur-lg text-white p-4 border-t border-white/10">
 
         <a href="#inicio" class="block py-3 text-lg border-b border-white/10">Inicio</a>
-
         <a href="#pedidos" class="block py-3 text-lg border-b border-white/10">Haz tu pedido</a>
-
         <a href="#beneficios" class="block py-3 text-lg border-b border-white/10">Beneficios</a>
-
         <a href="#opiniones" class="block py-3 text-lg border-b border-white/10">Opiniones</a>
-
         <a href="#faq" class="block py-3 text-lg border-b border-white/10">Preguntas frecuentes</a>
-
         <a href="#contacto" class="block py-3 text-lg">Contacto</a>
     </div>
 </header>
 
-
-<!-- BARRA PROMO DEBAJO DEL NAVBAR (STICKY) -->
-<div id="promoBar" 
-     class="w-full bg-[var(--domi-orange)] text-white py-3 px-4 shadow-md sticky top-[90px] z-40">
-
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-
-        <!-- IZQUIERDA: LOGO + TEXTOS -->
-        <div class="flex items-center gap-3">
-
-            <!-- LOGO -->
-            <img src="img/logoico.jpg" alt="Logo" class="w-10 h-10 object-contain rounded-full">
-
-            <!-- TEXTOS -->
-            <div class="leading-tight">
-                <span class="block font-bold text-[16px]">
-                    Domilisto.com
-                </span>
-                <span class="block text-[14px] opacity-90 -mt-1">
-                    La mejor página para hacer tus pedidos
-                </span>
-            </div>
-
-        </div>
-
-        <!-- DERECHA: BOTÓN + CERRAR -->
-        <div class="flex items-center gap-4">
-
-            <!-- BOTÓN PEDIR (BLANCO + TEXTO NEGRO) -->
-            <a href="#pedidos"
-               class="bg-white text-black font-semibold py-2 px-4 rounded-lg hover:opacity-80 transition">
-                Pedir
-            </a>
-
-            <!-- BOTÓN CERRAR -->
-            <button onclick="document.getElementById('promoBar').style.display='none'" 
-                    class="font-bold text-2xl leading-none text-white">
-                ✕
-            </button>
-
-        </div>
-
-    </div>
-</div>
 
 
 
