@@ -19,13 +19,13 @@
 
 
 <!-- PRELOADER (pegar justo después de <body>) -->
-<div id="preloader" aria-hidden="false" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black">
+<div id="preloader" aria-hidden="false" class="fixed inset-0 z-[99999] flex items-center justify-center bg-white">
   <div class="flex flex-col items-center gap-4">
     <!-- Logo o imagen de carga -->
     <img src="img/logoico.jpg" alt="Cargando Domilisto" id="preloader-logo" class="w-28 h-28 object-contain"/>
 
     <!-- Texto opcional -->
-    <p class="text-white text-sm opacity-80">Cargando aplicación...</p>
+    <p class="text-black text-sm opacity-80">Cargando aplicación...</p>
 
     <!-- Spinner sutil (opcional) -->
     <div class="loader w-10 h-10 rounded-full border-4 border-white/20 border-t-white animate-spin" aria-hidden="true"></div>
@@ -177,10 +177,12 @@
                        transition-transform duration-300 hover:scale-110 active:scale-110">
 
             <!-- TEXTO A LA DERECHA -->
-            <div class="leading-tight text-white">
-                <span class="text-xl font-bold">Delivery</span><br>
-                <span class="text-sm opacity-80">Domicilios</span>
-            </div>
+<div class="leading-tight text-white">
+    <span class="text-sm opacity-80 block">Delivery</span>
+    <span class="text-sm opacity-80 block">Domicilios</span>
+    <span class="text-sm opacity-80 block">Diligencias </span>
+</div>
+
 
         </a>
 
@@ -240,7 +242,6 @@
 
 
 
-
 <!-- SECCIÓN PROMOCIONES - CARRUSEL SOLO IMÁGENES -->
 <section id="promociones" class="py-12 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
@@ -249,41 +250,40 @@
         <div id="promoCarousel" class="flex overflow-x-scroll space-x-6 snap-x snap-mandatory pb-4 mt-6">
             
             <!-- 5 Tarjetas solo imagen -->
-            <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
-  <img src="img/marco.png" alt="Promo 1" 
-       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
-       draggable="false">
-</div>
+            <div class="flex-none w-72 md:w-80 h-60 snap-start hover:scale-105 transform transition overflow-hidden">
+                <img src="img/marco.png" alt="Promo 1" 
+                     class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+                     draggable="false">
+            </div>
 
-          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
-  <img src="img/marco.png" alt="Promo 1" 
-       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
-       draggable="false">
-</div>
+            <div class="flex-none w-72 md:w-80 h-60 snap-start hover:scale-105 transform transition overflow-hidden">
+                <img src="img/marco.png" alt="Promo 1" 
+                     class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+                     draggable="false">
+            </div>
 
+            <div class="flex-none w-72 md:w-80 h-60 snap-start hover:scale-105 transform transition overflow-hidden">
+                <img src="img/marco.png" alt="Promo 1" 
+                     class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+                     draggable="false">
+            </div>
 
-          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
-  <img src="img/marco.png" alt="Promo 1" 
-       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
-       draggable="false">
-</div>
+            <div class="flex-none w-72 md:w-80 h-60 snap-start hover:scale-105 transform transition overflow-hidden">
+                <img src="img/marco.png" alt="Promo 1" 
+                     class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+                     draggable="false">
+            </div>
 
-
-          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
-  <img src="img/marco.png" alt="Promo 1" 
-       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
-       draggable="false">
-</div>
-
-          <div class="flex-none w-72 md:w-80 h-32 snap-start hover:scale-105 transform transition overflow-hidden">
-  <img src="img/marco.png" alt="Promo 1" 
-       class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
-       draggable="false">
-</div>
+            <div class="flex-none w-72 md:w-80 h-60 snap-start hover:scale-105 transform transition overflow-hidden">
+                <img src="img/marco.png" alt="Promo 1" 
+                     class="w-full h-full object-cover rounded-[30px_10px_30px_10px] rounded-br-[50px] rounded-tl-[50px]" 
+                     draggable="false">
+            </div>
 
         </div>
     </div>
 </section>
+
 
 <style>
 /* Ocultar scrollbar si se aplica la clase */
@@ -379,7 +379,7 @@ slider.addEventListener('touchmove', e => {
 
 
 <!-- SECCIÓN PEDIDO / BUSCADOR PRINCIPAL -->
-<section id="pedidos" class="w-full bg-[#ff3b01] py-10 mt-10">
+<section id="pedidos" class="w-full bg-[#ff3b01] py-10 mt-0">
 
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
@@ -477,7 +477,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/domicilios.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Domicilios</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20solicitar%20un%20domicilio"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20solicitar%20un%20domicilio"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -487,7 +487,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/mensajeria.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Mensajería</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20solicitar%20un%20servicio%20de%20mensajería"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20solicitar%20un%20servicio%20de%20mensajería"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -497,7 +497,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/pagos.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Pagos y Trámites</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20realizar%20un%20pago%20o%20tr%C3%A1mite"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20realizar%20un%20pago%20o%20tr%C3%A1mite"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -507,7 +507,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/mercados.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Mercados</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20hacer%20un%20encargo%20de%20mercado"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20hacer%20un%20encargo%20de%20mercado"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -517,7 +517,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/restaurantes.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Restaurantes</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20pedir%20comida%20de%20restaurante"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20pedir%20comida%20de%20restaurante"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -527,7 +527,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/farmacia.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Farmacias</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20necesito%20un%20pedido%20de%20farmacia"
+            <a href="https://wa.me/573155004475?text=Hola,%20necesito%20un%20pedido%20de%20farmacia"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -537,7 +537,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/cafe.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Café & Postres</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20pedir%20café%20o%20postres"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20pedir%20café%20o%20postres"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -547,7 +547,7 @@ slider.addEventListener('touchmove', e => {
         <div class="min-w-[300px] bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
             <img src="iconos/alcohol.png" class="w-20 h-20 object-contain mb-4" alt="">
             <h3 class="font-semibold text-xl text-center text-black mb-4">Licores</h3>
-            <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20comprar%20licores"
+            <a href="https://wa.me/573155004475?text=Hola,%20quiero%20comprar%20licores"
                class="mt-2 bg-green-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-green-600 transition">
                Pedir por WhatsApp
             </a>
@@ -1007,10 +1007,10 @@ slider.addEventListener('touchmove', e => {
         <div>
             <h4 class="text-lg font-semibold text-white mb-3">Enlaces</h4>
             <ul class="space-y-2">
-                <li><a href="#" class="hover:text-[var(--domi-orange)]">Inicio</a></li>
-                <li><a href="#" class="hover:text-[var(--domi-orange)]">Servicios</a></li>
-                <li><a href="#" class="hover:text-[var(--domi-orange)]">Beneficios</a></li>
-                <li><a href="#" class="hover:text-[var(--domi-orange)]">Preguntas frecuentes</a></li>
+                <li><a href="#promociones" class="hover:text-[var(--domi-orange)]">Inicio</a></li>
+                <li><a href="#pedidos" class="hover:text-[var(--domi-orange)]">Servicios</a></li>
+                <li><a href="#beneficios" class="hover:text-[var(--domi-orange)]">Beneficios</a></li>
+                <li><a href="#faq" class="hover:text-[var(--domi-orange)]">Preguntas frecuentes</a></li>
             </ul>
         </div>
 
@@ -1019,10 +1019,10 @@ slider.addEventListener('touchmove', e => {
             <h4 class="text-lg font-semibold text-white mb-3">Contacto</h4>
             <ul class="space-y-2">
                 <li class="flex items-center gap-2">
-                    <span class="text-[var(--domi-orange)]">📧</span> soporte@domilisto.com
+                    <span class="text-[var(--domi-orange)]">📧</span> domilistoapp@gmail.com
                 </li>
                 <li class="flex items-center gap-2">
-                    <span class="text-[var(--domi-orange)]">📱</span> +57 300 000 0000
+                    <span class="text-[var(--domi-orange)]">📱</span> +57 315 500 4475
                 </li>
                 <li class="flex items-center gap-2">
                     <span class="text-[var(--domi-orange)]">📍</span> Colombia
@@ -1034,6 +1034,20 @@ slider.addEventListener('touchmove', e => {
 <div>
     <h4 class="text-lg font-semibold text-white mb-3">Síguenos</h4>
     <div class="flex gap-4 text-2xl">
+
+
+
+
+        <!-- FACEBOOK -->
+<a href="https://www.facebook.com/Domilisto" class="hover:text-[var(--domi-orange)] transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 24 24" class="w-7 h-7">
+        <path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 
+        1.893-4.788 4.659-4.788 1.325 0 2.463.098 2.794.142v3.24h-1.918c-1.504 0-1.795.715-1.795 1.764v2.316h3.587l-.467 
+        3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .598 23.403 0 22.675 0z"/>
+    </svg>
+</a>
+
 
         <!-- INSTAGRAM -->
         <a href="https://www.instagram.com/domilisto_app" class="hover:text-[var(--domi-orange)] transition">
@@ -1175,7 +1189,7 @@ slider.addEventListener('touchmove', e => {
         </div>
 
         <!-- Botón WhatsApp -->
-        <a href="https://wa.me/57XXXXXXXXXX?text=Hola,%20quiero%20más%20información"
+        <a href="https://wa.me/573155004475?text=Hola,%20quiero%20más%20información"
            target="_blank"
            class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg text-center font-semibold hover:bg-green-600 transition">
             Abrir chat en WhatsApp
