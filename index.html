@@ -35,62 +35,120 @@
 
 
 
+<!-- BARRA SUPERIOR (FIJA Y FUNCIONA EN MÓVIL Y PC) -->
+<div class="domi-topbar fixed top-0 left-0 w-full 
+            flex items-center justify-between 
+            px-4 md:px-8 py-3 
+            border-b border-black/10 bg-white 
+            z-[9999]">
 
-
-<!-- BARRA SUPERIOR SOLO MÓVIL -->
-<div class="domi-topbar md:hidden w-full flex items-center justify-between px-4 py-3 border-b border-black/10 bg-white">
-
-    <!-- Logo + texto -->
-    <div class="flex items-center space-x-3">
-        <img src="img/logo eduar.png" class="w-10 h-10 rounded-full object-cover border-2 ">
-        
-        <!-- Textos negros -->
-        <div class="flex flex-col leading-tight">
-            <span class="text-black text-base font-bold tracking-wide -mt-1">Delivery</span>
-            <span class="text-black text-base font-bold tracking-wide -mt-1">Domicilios</span>
-        </div>
+    <!-- Título Domilisto -->
+    <div>
+        <h3 class="text-1xl md:text-2xl font-bold text-[var(--domi-orange)] leading-none">
+            Domilisto.com
+        </h3>
     </div>
 
-    <!-- Barra de búsqueda + botón -->
-    <div class="flex-1 flex items-center space-x-2 max-w-[55%]">
-        <input type="text"
-               id="searchInput"
-               placeholder="Buscar sección..."
-               class="w-full py-2 px-3 rounded-lg bg-white text-black placeholder-black/50
-                      focus:outline-none focus:ring-2 focus:ring-[var(--domi-orange)] transition">
-        <button id="searchBtn" 
-                class="bg-[var(--domi-orange)] text-black font-semibold px-3 py-2 rounded-lg hover:bg-black hover:text-white transition">
-            Ir
-        </button>
+    <!-- Buscador -->
+    <div class="flex-1 mx-3 max-w-[350px] md:max-w-[450px]">
+        <input 
+            type="text" 
+            id="citySearch"
+            placeholder="Buscar ciudad..."
+            class="w-full py-2 px-3 rounded-lg bg-white text-black placeholder-black/50
+                   border border-black/20 focus:outline-none focus:ring-2 focus:ring-[var(--domi-orange)] transition"
+        >
     </div>
 
+    <!-- Botón menú con icono circular -->
+    <button id="cityBtn"
+            class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden shadow-md flex items-center justify-center 
+                   border-2 border-[var(--domi-orange)] bg-white hover:scale-110 transition">
+        <img src="iconos/co.png" alt="Colombia" class="w-full h-full object-cover">
+    </button>
+
+    <!-- MENÚ DESPLEGABLE -->
+    <div id="cityMenu"
+        class="hidden absolute right-4 md:right-8 top-[70px] w-48 md:w-60 bg-white rounded-lg shadow-lg border border-black/10 flex-col overflow-hidden z-[10000] max-h-80 overflow-y-auto">
+    </div>
 </div>
 
+<!-- ESPACIO PARA QUE EL CONTENIDO NO QUEDE TAPADO -->
+<div class="h-[70px]"></div>
+
+
 <script>
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.getElementById('searchBtn');
+  const cityBtn = document.getElementById('cityBtn');
+  const cityMenu = document.getElementById('cityMenu');
+  const citySearch = document.getElementById('citySearch');
 
-  const secciones = {
-    'inicio': 'inicio',
-    'pedido': 'pedidos',
-    'pedidos': 'pedidos',
-    'beneficios': 'beneficios',
-    'opiniones': 'opiniones',
-    'faq': 'faq',
-    'contacto': 'contacto'
-  };
+  const ciudades = [
+    { nombre: "Bogotá", link: "https://www.facebook.com/DomilistoBogota" },
+    { nombre: "Medellín", link: "https://www.facebook.com/DomilistoMedellin" },
+    { nombre: "Cali", link: "https://www.facebook.com/DomilistoCali" },
+    { nombre: "Barranquilla", link: "https://www.facebook.com/DomilistoBarranquilla" },
+    { nombre: "Sincelejo", link: "https://www.facebook.com/DomilistoSincelejo" },
+    { nombre: "Bucaramanga", link: "https://www.facebook.com/DomilistoBucaramanga" },
+    { nombre: "Montería", link: "https://www.facebook.com/DomilistoMonteria" },
+    { nombre: "Pereira", link: "https://www.facebook.com/DomilistoPereira" },
+    { nombre: "Ibagué", link: "https://www.facebook.com/DomilistoIbague" },
+    { nombre: "Manizales", link: "https://www.facebook.com/DomilistoManizales" }
+  ];
 
-  searchBtn.addEventListener('click', () => {
-    const query = searchInput.value.toLowerCase().trim();
-    const idSeccion = secciones[query];
+  // Renderizar ciudades
+  function renderCiudades(filtro = "") {
+    cityMenu.innerHTML = "";
 
-    if(idSeccion) {
-      const elemento = document.getElementById(idSeccion);
-      if(elemento) {
-        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    const filtradas = ciudades.filter(c =>
+      c.nombre.toLowerCase().includes(filtro.toLowerCase())
+    );
+
+    if (filtradas.length === 0) {
+      cityMenu.innerHTML = `<div class="py-2 px-4 text-gray-500">No encontrada</div>`;
+      return;
+    }
+
+    filtradas.forEach(ciudad => {
+      const a = document.createElement("a");
+      a.href = ciudad.link;
+      a.target = "_blank";
+      a.className = "py-2 px-4 block text-left hover:bg-gray-100 text-[var(--domi-orange)] transition";
+      a.textContent = ciudad.nombre;
+      cityMenu.appendChild(a);
+    });
+  }
+
+  // 👉 Al tocar la bandera: abrir menú Y mostrar el buscador
+  cityBtn.addEventListener('click', () => {
+    const isHidden = cityMenu.classList.contains('hidden');
+
+    if (isHidden) {
+      renderCiudades("");     // mostrar todas las ciudades
+      cityMenu.classList.remove('hidden');  
+      citySearch.focus();     // ⭐ hace que se abra el teclado y muestre el menú
     } else {
-      alert('No se encontró la sección');
+      cityMenu.classList.add('hidden');
+    }
+  });
+
+  // 👉 Mostrar todas apenas haga clic en el buscador
+  citySearch.addEventListener("focus", () => {
+    renderCiudades("");   
+    cityMenu.classList.remove("hidden");
+  });
+
+  // Filtrado dinámico
+  citySearch.addEventListener("input", () => {
+    cityMenu.classList.remove("hidden");
+    renderCiudades(citySearch.value);
+  });
+
+  // Cerrar cuando toca afuera
+  document.addEventListener("click", (e) => {
+    if (!cityMenu.contains(e.target) &&
+        e.target !== cityBtn &&
+        e.target !== citySearch) {
+      cityMenu.classList.add("hidden");
     }
   });
 </script>
@@ -104,11 +162,10 @@
 
 
 
-
-
-
     <!-- NAVBAR -->
-<header id="navbar" class="w-full fixed top-0 left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10">
+<header id="navbar" class="w-full fixed left-0 z-50 bg-[#121212]/95 backdrop-blur-sm shadow-lg border-b border-white/10
+                       top-[70px] md:top-[72px]">
+
     <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-4">
 
         <!-- LOGO + TEXTO -->
